@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>repl.it</title>
+    <h1>Create An Account</h1>
+  <body>
+    <div>
+      <form>
+        <div class="create-account">
+          <label for="firstname">First name</label>
+          <input type="text" required ="required" placeholder="First Name" id="firstname">
+        </div>
+        <div class="create-account">
+          <label for="lastname">Last name</label>
+          <input type="text" required ="required" placeholder="Last Name" id="lastname">
+        </div>
+        <div class="create-account">
+          <label for="emal">Email</label>
+          <input type="text" required ="required" placeholder="Email" id="emal">
+        </div>
+        <div class="create-account">
+          <label for="username">Username</label>
+          <input type="text" required ="required" placeholder="Username"  id="username">
+        </div>
+        <div class="create-account">
+          <label for="password">Password</label>
+          <input type="password" required ="required" minlength="10" placeholder="password" id="password">
+        </div>
+        <div class="create-account">
+          <label for="birthdate">Birth date</label>
+          <input type="date" required ="required" id="birthdate">
+        </div>
+        <div class="create-account">
+          <label for="happyrange">How happy ar you?</label>
+          <input type="range" required ="required" list="tickmark" id ="happyrange">
+            <datalist id="tickmark">
+              <option value="0"></option>
+              <option value="10"></option>
+              <option value="20"></option>
+              <option value="30"></option>
+              <option value="40"></option>
+              <option value="50"></option>
+              <option value="60"></option>
+              <option value="70"></option>
+              <option value="80"></option>
+              <option value="90"></option>
+              <option value="100"></option>
+            </datalist>
+        <div class="create-account">
+          <label for="color">What is your fav. color?</label>
+          <input type="color" required ="required" id="color">
+        </div>
+        <div>
+          <input type="submit" value = "Create Account" id="createaccount">
+        </div>
+      </form>
+     </form>
+    </div>
+  </body>
+</html>

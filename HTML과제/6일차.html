@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>repl.it</title>
+
+    <style>
+      body {
+        background-color: gainsboro;
+      }
+      h1 {
+        font-size: 30pt;
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .colorbox-rowbox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .colorbox-outbox {
+        width: 200px;
+        height: 300px;
+        margin: 10px;
+        border: white solid 5px;
+      }
+
+      body > div:nth-child(2) > div:nth-child(1) {
+        background-color: tomato;
+      }
+
+      body > div:nth-child(2) > div:nth-child(2) {
+        background-color: teal;
+      }
+      body > div:nth-child(3) > div:nth-child(1) {
+        background-color: burlywood;
+      }
+      body > div:nth-child(3) > div:nth-child(2) {
+        background-color: thistle;
+      }
+
+      .colorbox-inbox {
+        width: 200px;
+        height: 100px;
+        position: relative;
+        top: 20px;
+        background-color: honeydew;
+      }
+      .colorbox-titlebox-titletext {
+        font-size: 24pt;
+        font-weight: 600;
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>The Best Colors</h1>
+    </div>
+    <div class="colorbox-rowbox">
+      <div class="colorbox-outbox bg-tomato">
+        <div class="colorbox-inbox">
+          <div class="colorbox-titlebox">
+            <div class="colorbox-titlebox-titletext">Tomato</div>
+            <div class="colorbox-titlebox-colortext">#FF6347</div>
+          </div>
+        </div>
+      </div>
+      <div class="colorbox-outbox bg-teal">
+        <div class="colorbox-inbox">
+          <div class="colorbox-titlebox">
+            <div class="colorbox-titlebox-titletext">Teal</div>
+            <div class="colorbox-titlebox-colortext">#008080</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="colorbox-rowbox">
+      <div class="colorbox-outbox bg-burlywood">
+        <div class="colorbox-inbox">
+          <div class="colorbox-titlebox">
+            <div class="colorbox-titlebox-titletext">Burlywood</div>
+            <div class="colorbox-titlebox-colortext">#DEB887</div>
+          </div>
+        </div>
+      </div>
+      <div class="colorbox-outbox bg-thistle">
+        <div class="colorbox-inbox">
+          <div class="colorbox-titlebox">
+            <div class="colorbox-titlebox-titletext">Thistle</div>
+            <div class="colorbox-titlebox-colortext">#D7BFD7</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
