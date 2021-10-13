@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>You Are Awesome!</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body{
+            display:flex;
+            flex-direction: column;
+            margin:10px;
+            padding :10px;
+            height: 50vh;
+            justify-content: center;
+            align-items: center;
+            border: solid 10px darkcyan;
+            
+        }
+        .test-border{
+            border: dashed red 2px;
+        }
+        .title{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            font-size:22pt;
+            font-weight: 800;
+            margin: 5px;
+            
+        }
+        .title-closed{
+            width:50px;
+            height: 50px;
+            
+        }
+        .title-text{
+            width:200px;
+            height: 50px;
+            text-align: center;
+        }
+        .playing{
+            display: flex;
+            height: 5vh;
+        }
+    </style>
+  </head>
+  <body>
+      <div class = "title">
+          <div class ="title title-closed test-border">X</div>
+          <div class = "title title-text test-border">Play list</div>
+      </div>
+
+      <div class = "playing">
+          <div class = "playing-icon">icon</div>
+          <div class ="playing-contents">
+              <div class ="playing-contents-title playing-contents-row">노래 제목</div>
+              <div class ="playing-contents-notice playing-contents-row">내용 </div>
+          </div>
+      </div>
+
+      <div class = "menu">menu</div>
+      <ul class ="playlist">playlist
+          <li class ="playlist-icon">icon</li>
+          <li class = "playlist-contents">
+              <li class = "playlist-contents-title">노래제목</li>
+              <li class = "playlist-contents-notice">내용</li>
+          </li>
+          
+      </ul>
+      
+  </body>
+</html>
