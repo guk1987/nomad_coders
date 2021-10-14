@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://andybrewer.github.io/mvp/mvp.css" rel="stylesheet"></link>
+</head>
+
+<body>
+  <header>
+    <h1>{{items["title"]}}</h1>
+    <div>
+      {{items["points"]}} points | By {{items["author"]}} | <a href="{{items['url']}}" target="_blank">{{items["url"]}}</a>
+    </div>
+  </header>
+  <main>
+    {%for item in items["children"]%}
+      <div>
+        {% if item["author"] == None %}
+          [deleted]
+        {%else%}
+        <strong>{{item["author"]}} :</strong>
+        {% autoescape false %}
+        <p><p>{{item["text"]}}</p></p>
+        {% endautoescape %}
+        {%endif%}
+      </div>
+      <hr />
+      {%endfor%}
+  </main>
+</body>
+
+</html>

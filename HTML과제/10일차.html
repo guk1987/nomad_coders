@@ -1,76 +1,314 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>You Are Awesome!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.14.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/FortAwesome/Font-Awesome@5.14.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
 
     <style>
-        body{
-            display:flex;
-            flex-direction: column;
-            margin:10px;
-            padding :10px;
-            height: 50vh;
-            justify-content: center;
-            align-items: center;
-            border: solid 10px darkcyan;
-            
-        }
-        .test-border{
-            border: dashed red 2px;
-        }
-        .title{
-            display:flex;
-            justify-content: center;
-            align-items: center;
-            font-size:22pt;
-            font-weight: 800;
-            margin: 5px;
-            
-        }
-        .title-closed{
-            width:50px;
-            height: 50px;
-            
-        }
-        .title-text{
-            width:200px;
-            height: 50px;
-            text-align: center;
-        }
-        .playing{
-            display: flex;
-            height: 5vh;
-        }
+      body {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+        padding: 10px;
+        width: 500px;
+        height: 800px;
+        align-items: center;
+        border: solid 10px darkcyan;
+        font-family: "Times New Roman", Times, serif;
+      }
+
+      .title {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        height: 50px;
+        margin: 50px 10px;
+
+        font-size: 42pt;
+        font-weight: bold;
+      }
+      .title-closed {
+        display: flex;
+        position: absolute;
+        left: 50px;
+        width: 50px;
+      }
+
+      .title-text {
+        text-align: center;
+      }
+      .playing {
+        display: flex;
+        width: 500px;
+        height: 170px;
+      }
+      .playing-icon {
+        display: flex;
+        margin: 5px;
+        height: 150px;
+        width: 150px;
+        border: solid black 2px;
+        border-radius: 10%;
+      }
+      .playing-img {
+        transform: scale(0.5);
+      }
+      .playing-contents {
+        display: flex;
+        flex-direction: column;
+        margin: 10px;
+      }
+      .playing-contents-title {
+        font-size: 42pt;
+        font-weight: 600;
+      }
+      .playing-contents-notice {
+        font-size: 15pt;
+        font-weight: 600;
+      }
+      .menu {
+        display: flex;
+        align-items: center;
+        width: 500px;
+        height: 100px;
+      }
+      .menu-play-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 5px 10px;
+        width: 200px;
+        height: 70px;
+        border: solid black 2px;
+        border-width: 2px 2px 5px 2px;
+        border-radius: 20px;
+      }
+      .menu-play-box-icon {
+        display: flex;
+        width: 50px;
+        transform: scale(1.8);
+        position: relative;
+        left: -12px;
+      }
+      .menu-play-box-text {
+        display: flex;
+        width: 50px;
+        position: relative;
+        left: -10px;
+        font-weight: 600;
+        font-size: 20pt;
+      }
+      .menu-heart-box {
+        display: flex;
+        margin: 0 40px;
+        width: 70px;
+        height: 70px;
+        border: solid black 2px;
+        border-width: 2px 2px 5px 2px;
+        border-radius: 50%;
+      }
+      .menu-heart-box-icon {
+        display: flex;
+        transform: scale(0.8);
+      }
+      .menu-plus-box {
+        display: flex;
+        width: 70px;
+        height: 70px;
+        border: solid black 2px;
+        border-width: 2px 2px 5px 2px;
+        border-radius: 50%;
+      }
+      .menu-plus-box-icon {
+        display: flex;
+        transform: scale(0.8);
+      }
+
+      .playlist {
+        display: flex;
+        align-items: center;
+        width: 500px;
+        height: 90px;
+      }
+      .playlist-icon {
+        display: flex;
+        flex-direction: column;
+        margin: 5px;
+        height: 55px;
+        width: 55px;
+        border: solid black 2px;
+        border-radius: 10%;
+      }
+
+      .playlist-contents {
+        display: flex;
+        flex-direction: column;
+      }
+      .playlist-contents-title {
+        font-size: 28px;
+        font-weight: 600;
+        margin: 3px 10px;
+      }
+      .playlist-contents-notice {
+        color: gray;
+        margin: 2px 10px;
+      }
+      .goldenrod-color {
+        background-color: goldenrod;
+      }
+      .red-color {
+        background-color: red;
+      }
+      .pink-color {
+        background-color: pink;
+      }
+      .blue-color {
+        background-color: blue;
+      }
+      .darkcyan-color {
+        background-color: darkcyan;
+      }
     </style>
   </head>
   <body>
-      <div class = "title">
-          <div class ="title title-closed test-border">X</div>
-          <div class = "title title-text test-border">Play list</div>
-      </div>
+    <div class="title test-border">
+      <span class="title-closed test-border">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="black"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="3"
+            d="M6 18L18 6M6 6l12 12"
+          />
+        </svg>
+      </span>
+      <span class="title-text test-border">Playlist</span>
+    </div>
 
-      <div class = "playing">
-          <div class = "playing-icon">icon</div>
-          <div class ="playing-contents">
-              <div class ="playing-contents-title playing-contents-row">노래 제목</div>
-              <div class ="playing-contents-notice playing-contents-row">내용 </div>
-          </div>
+    <div class="playing">
+      <div class="playing-icon goldenrod-color">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="playing-img h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="white"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="1"
+            d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+          />
+        </svg>
       </div>
+      <div class="playing-contents">
+        <span class="playing-contents-title">Random Love</span>
+        <span class="playing-contents-notice">by Divay Kapoor </span>
+      </div>
+    </div>
 
-      <div class = "menu">menu</div>
-      <ul class ="playlist">playlist
-          <li class ="playlist-icon">icon</li>
-          <li class = "playlist-contents">
-              <li class = "playlist-contents-title">노래제목</li>
-              <li class = "playlist-contents-notice">내용</li>
-          </li>
-          
-      </ul>
-      
+    <div class="menu">
+      <div class="menu-play-box">
+        <div class="menu-play-box-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1"
+              d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
+            />
+          </svg>
+        </div>
+        <div class="menu-play-box-text">Play</div>
+      </div>
+      <div class="menu-heart-box">
+        <div class="menu-heart-box-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div class="menu-plus-box">
+        <div class="menu-plus-box-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4v16m8-8H4"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <ul class="playlist">
+      <li class="playlist-icon red-color"></li>
+      <li class="playlist-contents">
+        <span class="playlist-contents-title">Matargasti</span>
+        <span class="playlist-contents-notice">Mohit Chauhan</span>
+      </li>
+    </ul>
+    <ul class="playlist">
+      <li class="playlist-icon pink-color"></li>
+      <li class="playlist-contents">
+        <span class="playlist-contents-title">Attitude</span>
+        <span class="playlist-contents-notice">Lewis OfMan Attitude</span>
+      </li>
+    </ul>
+    <ul class="playlist">
+      <li class="playlist-icon blue-color"></li>
+      <li class="playlist-contents">
+        <span class="playlist-contents-title">Try Everthing</span>
+        <span class="playlist-contents-notice">Shakira Zootopia</span>
+      </li>
+    </ul>
+    <ul class="playlist">
+      <li class="playlist-icon darkcyan-color"></li>
+      <li class="playlist-contents">
+        <span class="playlist-contents-title">Sunflower</span>
+        <span class="playlist-contents-notice">Joseph Vincent Sunflower</span>
+      </li>
+    </ul>
   </body>
 </html>

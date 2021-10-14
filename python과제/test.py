@@ -1,27 +1,31 @@
-test_dict = {}
-test_in_dict = {'주소': 'https://naver.com', '인원': '100명', '주소': '서울특별시'}
+import requests
+from flask import Flask, render_template, request
 
-key_names = ['a', 'b', 'c']
-value_params = ['유환국', '가나다', '사람', '어쩌고 저쩌고']
+base_url = "http://hn.algolia.com/api/v1"
 
-for key_name in key_names:
-    test_dict[key_name] = test_in_dict
+# This URL gets the newest stories.
+new = f"{base_url}/search_by_date?tags=story"
 
-
-len(test_dict)
-a = test_dict.keys()
-test_dict
-type(a)
+# This URL gets the most popular stories
+popular = f"{base_url}/search?tags=story"
 
 
-dict(zip(company_keys, url_vals))
+# This function makes the URL to get the detail of a storie by id.
+# Heres the documentation: https://hn.algolia.com/api
+def make_detail_url(id):
+    return f"{base_url}/items/{id}"
 
 
-a_keys = ['a_1', 'a_2', 'a_3']
-a_vals = [1, 2, 3]
+r_new = requests.get(new)
+# dict_keys(['hits', 'nbHits', 'page', 'nbPages', 'hitsPerPage', 'exhaustiveNbHits', 'exhaustiveTypo', 'query', 'params', 'renderingContent', 'processingTimeMS'])
+r_new.json().keys()
 
-b_keys = ['b_1', 'b_2', 'b_3']
-b_vals = [10, 20, 30]
+db = r_new.json()
 
-test_dict = dict(zip(a_keys, a_vals))
-test_dict = dict(zip(b_keys, b_vals))
+db['hits']
+
+for item in db['hits']:
+    print(type(item))
+    item('title')
+
+t_db = {}

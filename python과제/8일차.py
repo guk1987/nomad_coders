@@ -19,11 +19,22 @@ def make_detail_url(id):
 db = {}
 app = Flask("DayNine")
 
-app.run(host="0.0.0.0")
+
+@app.route("/")
+def home(new):
+    r_new = requests.get(new)
+    new_news = r_new.json()
+    print(new_news)
+    return render_template('home.html', new_news=new_news)
+
+
+app.run()
 
 r_new = requests.get(new)
 # dict_keys(['hits', 'nbHits', 'page', 'nbPages', 'hitsPerPage', 'exhaustiveNbHits', 'exhaustiveTypo', 'query', 'params', 'renderingContent', 'processingTimeMS'])
 r_new.json().keys()
+
+
 
 r_popular = requests.get(popular)
 #dict_keys(['hits', 'nbHits', 'page', 'nbPages', 'hitsPerPage', 'exhaustiveNbHits', 'exhaustiveTypo', 'query', 'params', 'renderingContent', 'processingTimeMS'])
