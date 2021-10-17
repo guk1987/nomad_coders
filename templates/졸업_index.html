@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      .job-form {
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0px 2px 3px 1px rgba(0, 0, 0, 0.3);
+        width: 400px;
+        height: 100px;
+        padding: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Remote Jobs!</h1>
+    <form class="job-form" action="/report" method="get">
+      <input
+        type="text"
+        placeholder="Search for a job"
+        required
+        name="search_text"
+      />
+      <input type="submit" />
+    </form>
+  </body>
+</html>

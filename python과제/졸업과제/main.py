@@ -9,12 +9,14 @@ Good luck!
 """
 
 import requests
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 from bs4 import BeautifulSoup
-from werkzeug.datastructures import Headers
+from werkzeug.utils import redirect
+import csv
 
-#fake_db 선언
+#fake_db / app 선언
 fake_db = {}
+app = Flask("졸업")
 
 
 #fake_db에 검색어가 없으면 True를 반환한다.
@@ -25,7 +27,7 @@ def check_first_search(_search_text):
 
 # 각 게시물마다 추출한 자료를 fake_db에 업데이트한다.
 def update_dict(_search_text, _title, _company, _url):
-    _set_dict = {'title': _title, 'comapny': _company, 'url': _url}
+    _set_dict = {'title': _title, 'company': _company, 'url': _url}
     fake_db.get(_search_text).append(_set_dict)
 
 
@@ -134,21 +136,64 @@ def remoteok_scrapper(search_text):
     return
 
 
-while True:
+def save_to_csv(jobs):
+    file = open("jobs.csv", mode="w", newline="", encoding='utf-8')
+    writer = csv.writer(file)
+    writer.writerow(["title", "company", "link_url"])
+    for job in jobs:
+        writer.writerow(list(job.values()))
+    return
+
+
+@app.route('/')
+def home():
+    return render_template('졸업_index.html')
+
+
+@app.route('/report')
+def report():
+
     #검색어를 받는다
-    search_text = input('입력')
-    search_text = search_text.lower()
-    #fake DB에 있는지 체크해서 없으면 크롤링 시작한다.
-    if check_first_search(search_text):
+    search_text = request.args.get('search_text')
 
-        #Fake DB에 내용이 없으므로 해당 Search_text로 Key를 하나 생성한다.
-        fake_db[search_text] = []
+    if search_text:
+        search_text = search_text.lower()
 
-        #각 페이지 크롤링해서 title / company / url을 fake_db에 업데이트
-        stackoverflow_scrapper(search_text)
-        weworkremotely_scrapper(search_text)
-        remoteok_scrapper(search_text)
+        #fake DB에 있는지 체크해서 없으면 크롤링 시작한다.
+        if check_first_search(search_text):
 
-    #해당 검색어는 이미 크롤링되어서 Fake DB에 있으므로 바로 결과 페이지로 넘어감
+            #Fake DB에 내용이 없으므로 해당 Search_text로 Key를 하나 생성한다.
+            fake_db[search_text] = []
+
+            #각 페이지 크롤링해서 title / company / url을 fake_db에 업데이트
+            stackoverflow_scrapper(search_text)
+            weworkremotely_scrapper(search_text)
+            remoteok_scrapper(search_text)
+
+        #해당 검색어는 이미 크롤링되어서 Fake DB에 있으므로 바로 결과 페이지로 넘어감
+        else:
+            print(f'이미 Fake DB에 등록되어있습니다. {fake_db.keys()}')
     else:
-        print(f'이미 Fake DB에 등록되어있습니다. {fake_db.keys()}')
+        return redirect('/')
+
+    rst_num = len(fake_db[search_text])
+    return render_template('졸업_report.html',
+                           fake_db=fake_db,
+                           search_text=search_text,
+                           rst_num=rst_num)
+
+
+@app.route('/export')
+def export():
+    search_text = request.args.get('search_text')
+    if search_text:
+        search_text = search_text.lower()
+        jobs = fake_db[search_text]
+        save_to_csv(jobs)
+
+    else:
+        return redirect('/')
+    return send_file('jobs.csv')
+
+
+app.run()
